@@ -15,6 +15,10 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
+import java.util.Random;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +30,7 @@ public class NotesFragment extends Fragment {
     Cursor cursor;
     ListView notesList;
     ImageButton addnotesbtn;
+    private FirebaseAnalytics firebaseAnalytics;
 
     public NotesFragment() {
         // Required empty public constructor
@@ -35,6 +40,7 @@ public class NotesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbhelper_obj = new DatabaseHelper(getActivity());
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
     }
 
     @Override
@@ -62,6 +68,17 @@ public class NotesFragment extends Fragment {
         dbhelper_obj.addNotes("Dora", "ISTE CLUB TESTING");
         Log.d("VALUE", String.valueOf(notesList.getItemAtPosition(0)));
         notesList.invalidate();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID,"add__notes_btn_click");
+        bundle.putString("content",notesList.getItemAtPosition(0).toString());
+
+        //Logs an app event.
+        firebaseAnalytics.logEvent("Math", bundle);
+
+        Random rn = new Random();
+        int num =  rn.nextInt(1000 - 10 + 1) + 10;
+        firebaseAnalytics.setUserId(String.valueOf(num));
 
         Toast.makeText(NotesFragment.this.getActivity(),"Notes list loaded", Toast.LENGTH_SHORT).show();
         return rootView ;
