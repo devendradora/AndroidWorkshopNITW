@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "546647447307",
+    "firebase_url": "https://android-workshop-nitw.firebaseio.com",
+    "project_id": "android-workshop-nitw",
+    "storage_bucket": "android-workshop-nitw.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546647447307:android:0a24f81904443481",
+        "android_client_info": {
+          "package_name": "com.dora.androidnitw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546647447307-11oq0bv4ij4vii66cnq86hpodb0n0uc2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALEoG298gikeFDMlvqvP7FGCfs2JEiEOc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
