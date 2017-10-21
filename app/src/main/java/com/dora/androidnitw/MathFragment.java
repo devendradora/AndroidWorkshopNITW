@@ -61,7 +61,7 @@ public class MathFragment extends Fragment  {
 
                 if (!TextUtils.isEmpty(x) && !TextUtils.isEmpty(y)){
                     if(x_scanner.hasNextDouble() && y_scanner.hasNextDouble()) {
-                        res.setText("Sum = " + (Integer.parseInt(num1.getText().toString()) + Integer.parseInt(num2.getText().toString())));
+                        res.setText("Sum = " + (Double.parseDouble(x) + Double.parseDouble(y)));
                         Bundle bundle = new Bundle();
                         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "add_btn_click");
                         bundle.putString("num1", num1.toString());
