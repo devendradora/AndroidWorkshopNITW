@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dora.androidnitw.NotesFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageButton
+        android:id="@+id/Courses_addbutton"
+        android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip"
+        android:layout_gravity="top|right"
+        android:background="@drawable/ic_action_add" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_notes" />
+
+</FrameLayout>
