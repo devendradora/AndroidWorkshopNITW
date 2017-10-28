@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -29,7 +31,8 @@ public class NotesFragment extends Fragment {
     SQLiteDatabase db_obj;
     Cursor cursor;
     ListView notesList;
-    ImageButton addnotesbtn;
+    EditText text1,text2;
+    Button addnotesbtn;
     private FirebaseAnalytics firebaseAnalytics;
 
     public NotesFragment() {
@@ -48,7 +51,9 @@ public class NotesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_notes, container, false);
-        addnotesbtn = (ImageButton) rootView.findViewById(R.id.Courses_addbutton);
+        addnotesbtn = (Button) rootView.findViewById(R.id.addBtn);
+        text1 = (EditText) rootView.findViewById(R.id.text1);
+        text2 = (EditText) rootView.findViewById(R.id.text2);
 //        final FragmentManager fragManager = getFragmentManager();
 //        addnotesbtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -58,14 +63,19 @@ public class NotesFragment extends Fragment {
 //                fragManager.beginTransaction().replace(R.id.container, addFrag,null).addToBackStack(null).commit();
 //            }
 //        });
-
+        addnotesbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbhelper_obj.addNotes(text1.getText().toString(),text2.getText().toString());
+            }
+        });
         notesList = (ListView)rootView.findViewById(R.id.lv_notes);
         String[] from= {"TITLE","DESC"};
         int[] to={R.id.tv_title,R.id.tv_desc};
         cursor = dbhelper_obj.getAllNotes();
         SimpleCursorAdapter curAdapter = new SimpleCursorAdapter(getActivity(),R.layout.fragment_notes_row,cursor,from,to);
         notesList.setAdapter(curAdapter);
-        dbhelper_obj.addNotes("Dora", "ISTE CLUB TESTING");
+        //dbhelper_obj.addNotes("Dora", "ISTE CLUB TESTING");
         Log.d("VALUE", String.valueOf(notesList.getItemAtPosition(0)));
         notesList.invalidate();
 
