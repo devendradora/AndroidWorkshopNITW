@@ -20,7 +20,7 @@ import java.util.Random;
  * A simple {@link Fragment} subclass.
  */
 public class MathFragment extends Fragment  {
-    Button addbtn;
+    Button addbtn,clearbtn;
     EditText num1,num2;
     TextView res;
     private FirebaseAnalytics firebaseAnalytics;
@@ -48,7 +48,7 @@ public class MathFragment extends Fragment  {
          num2 =(EditText)rootview.findViewById(R.id.num2);
          res= (TextView)rootview.findViewById(R.id.resultTv);
         addbtn = (Button)rootview.findViewById(R.id.addbtn);
-
+        clearbtn = (Button)rootview.findViewById(R.id.clearbtn);
 
 
 
@@ -68,6 +68,15 @@ public class MathFragment extends Fragment  {
                 firebaseAnalytics.setUserId(String.valueOf(num));
 
            }
+        });
+
+        clearbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                res.setText("");
+                num2.setText("");
+                num1.setText("");
+            }
         });
         return rootview;
     }
